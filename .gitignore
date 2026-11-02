@@ -1,0 +1,23 @@
+# Libraries (can be re-installed with npm install)
+node_modules/
+
+# Secrets and environment settings
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/

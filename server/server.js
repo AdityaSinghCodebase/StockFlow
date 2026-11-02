@@ -4,6 +4,8 @@ import env from "./config/env.js";
 import connectDB from "./config/db.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
+import authRoutes from "./routes/auth.routes.js";
+
 const app = express();
 const PORT = 8000;
 
@@ -13,9 +15,6 @@ app.use(
     credentials: true,
   }),
 );
-
-app.use(notFound);
-app.use(errorHandler);
 
 app.use(express.json());
 // test route
@@ -27,6 +26,11 @@ app.get("/api/health", (req, res) => {
     environment: env.nodeEnv,
   });
 });
+
+app.use("/api/auth", authRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 // server
 

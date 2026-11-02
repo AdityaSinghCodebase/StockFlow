@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import env from "./config/env.js";
 import connectDB from "./config/db.js";
+import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
 import dns from "node:dns";
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
@@ -15,6 +16,9 @@ app.use(
     credentials: true,
   }),
 );
+
+app.use(notFound);
+app.use(errorHandler);
 
 app.use(express.json());
 // test route

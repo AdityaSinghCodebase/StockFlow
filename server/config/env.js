@@ -8,6 +8,7 @@ const env = {
   jwtAccessSecret: process.env.JWT_ACCESS_SECRET,
   jwtRefreshSecret: process.env.JWT_REFRESH_SECRET,
   jwtAccessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN || "15m",
+  jwtRefreshExpiresDays: Number(process.env.JWT_REFRESH_EXPIRES_DAYS) || 7,
 };
 
 if (!env.mongoUri) {

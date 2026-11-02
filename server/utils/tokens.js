@@ -12,3 +12,18 @@ export const signAccessToken = (user) => {
 export const verifyAccessToken = (token) => {
   return jwt.verify(token, env.jwtAccessSecret);
 };
+
+export const signRefreshToken = (session) => {
+  return jwt.sign(
+    { sub: session.user.toString(), family: session.family },
+    env.jwtRefreshSecret,
+    {
+      expiresIn: `${env.jwtRefreshExpiresDays}d`,
+      jwtid: session._id.toString(),
+    },
+  );
+};
+
+export const verifyRefreshToken = (token) => {
+  return jwt.verify(token, env.jwtRefreshSecret);
+};

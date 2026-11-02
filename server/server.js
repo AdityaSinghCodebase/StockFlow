@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
 import authRoutes from "./routes/auth.routes.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const PORT = 8000;
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.use(express.json());
+app.use(cookieParser());
 // test route
 
 app.get("/api/health", (req, res) => {
